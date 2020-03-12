@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet, Text, View,
   TouchableOpacity
@@ -7,12 +7,28 @@ import {
 import CustomInput from './components/CustomInput';
 
 export default function App() {
+
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+
   return (
     <View style={styles.container}>
-      <Text>Hola Mundo</Text>
+      <Text style={{fontSize: 40}}>
+        Hola, {
+          (user == "") ? "Mundo" : user
+        }
+      </Text>
       
-      <CustomInput placeholder={"Usuario..."} icon={"user"} />
-      <CustomInput placeholder={"Contraseña..."} icon={"lock"} password={true} />
+      <CustomInput 
+        placeholder={"Usuario..."} 
+        icon={"user"} 
+        action={setUser}/>
+
+      <CustomInput 
+        placeholder={"Contraseña..."} 
+        icon={"lock"} 
+        password={true} 
+        action={setPass}/>
       
       <TouchableOpacity style={styles.button_container}>
         <Text style={styles.button_text}>Iniciar sesión</Text>
