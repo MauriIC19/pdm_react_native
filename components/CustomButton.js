@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function CustomInput() {
+export default function CustomInput(props) {
   return ( 
-      <TouchableOpacity style={styles.button_container}>
+      <TouchableOpacity style={styles.button_container} onPress={props.action}>
         <Text style={{color:'white', fontSize: 22}}>Iniciar sesión</Text>
       </TouchableOpacity>
   );

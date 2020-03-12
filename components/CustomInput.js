@@ -6,7 +6,11 @@ export default function CustomInput(props) {
     return (
         <View style={styles.input_container}>
             <Icon style={styles.input_icon} name={props.icon} size={30} color={"rgba(0, 0, 0, 0.4)"} />
-            <TextInput style={styles.input} placeholder={props.placeholder} secureTextEntry={props.secure}/>
+            <TextInput 
+                style={styles.input} 
+                placeholder={props.placeholder} 
+                secureTextEntry={props.secure}
+                onChangeText={props.action}/>
         </View>
     );
 }
