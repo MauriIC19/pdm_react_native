@@ -1,34 +1,19 @@
 import React, { useState } from 'react';
 import {
   StyleSheet, Text, View,
-  KeyboardAvoidingView, StatusBar, AsyncStorage
+  KeyboardAvoidingView, StatusBar
 } from 'react-native';
+
+import { useAuth } from '../auth/AuthContext';
 
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
-import { useAuth } from '../auth/Context'
 
 export default function Login() {
-  const { signIn } = useAuth();
 
+  const { signIn } = useAuth();
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
-
-  const login = async () => {
-    const user_data = {
-      user: user,
-      pass: pass
-    }
-    try {
-      await AsyncStorage.setItem("user", JSON.stringify(user_data));
-      let user_stored = await AsyncStorage.getItem("user");
-      user_stored = JSON.parse(user_stored);
-      console.log(user_stored);
-    }
-    catch (e) {
-      console.error(e);
-    }
-  }
 
   return (
     <View style={styles.container}>
@@ -52,7 +37,7 @@ export default function Login() {
           password={true}
           action={setPass} />
 
-        <CustomButton action={() => signIn({username: user, password: pass})}/>
+        <CustomButton action={() => signIn({ username: user, password: pass })} />
       </KeyboardAvoidingView>
     </View>
   );

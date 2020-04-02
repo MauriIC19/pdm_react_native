@@ -1,11 +1,11 @@
 import React from 'react';
-import { AuthProvider } from './auth/Context'
-import Router from './routes/MainNavigator'
+import AuthNavigator from './routes/AuthNavigator';
+import { AuthProvider } from './auth/AuthContext';
 
 export default function App() {
   return (
-      <AuthProvider>
-        <Router />
-      </AuthProvider>
+    <AuthProvider>
+      <AuthNavigator />
+    </AuthProvider>
   );
 }
