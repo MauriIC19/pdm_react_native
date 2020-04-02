@@ -22,7 +22,7 @@ export default function Router() {
         <NavigationContainer>
             <Stack.Navigator headerMode="none">
                 {
-                    auth.isSignout ?
+                    auth.user == null ?
                         (<Stack.Screen name="Login" component={Login} />) :
                         (<Stack.Screen name="Main" component={Main} />)
                 }

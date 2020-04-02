@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet, Text, View,
   KeyboardAvoidingView, StatusBar, AsyncStorage
@@ -52,7 +52,7 @@ export default function Login() {
           password={true}
           action={setPass} />
 
-        <CustomButton action={signIn} />
+        <CustomButton action={() => signIn({username: user, password: pass})}/>
       </KeyboardAvoidingView>
     </View>
   );
