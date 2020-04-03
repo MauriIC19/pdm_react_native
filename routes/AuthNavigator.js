@@ -2,8 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import AppNavigator from './AppNavigator';
+
 import Login from '../screens/Login';
-import Main from '../screens/Main';
 import Loading from '../screens/Loading';
 
 import { useAuth } from '../auth/AuthContext';
@@ -12,9 +13,9 @@ const Stack = createStackNavigator();
 
 export default function AuthNavigator() {
 
-    const auth = useAuth();
+    const { isLoading, user } = useAuth();
 
-    if (auth.isLoading) {
+    if (isLoading) {
         return (
             <Loading />
         );
@@ -24,9 +25,9 @@ export default function AuthNavigator() {
         <NavigationContainer>
             <Stack.Navigator headerMode="none">
                 {
-                    auth.user == null ? 
-                    (<Stack.Screen name="Login" component={Login} />) :
-                    (<Stack.Screen name="Main" component={Main} />)
+                    user == null ?
+                        (<Stack.Screen name="Login" component={Login} />) :
+                        (<Stack.Screen name="App" component={AppNavigator} />)
                 }
             </Stack.Navigator>
         </NavigationContainer>
